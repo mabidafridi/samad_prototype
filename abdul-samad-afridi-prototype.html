@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Samad Afridi — English Language Instructor, Peshawar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12211f;
+    --ink-2:#1b322f;
+    --paper:#ece6d6;
+    --paper-dim:#cfc7ae;
+    --brass:#c1963f;
+    --brass-bright:#dcb35f;
+    --brick:#a3503a;
+    --line: rgba(236,230,214,0.16);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  ::selection{background:var(--brass); color:var(--ink);}
+  :focus-visible{outline:2px solid var(--brass-bright); outline-offset:3px;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,33,31,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .brandmark{display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:0.02em;}
+  .brandmark .seal-mini{width:30px; height:30px; flex-shrink:0;}
+  .navlinks{display:flex; gap:32px; font-size:14px;}
+  .navlinks a{text-decoration:none; color:var(--paper-dim); transition:color .2s;}
+  .navlinks a:hover{color:var(--brass-bright);}
+  .navlinks a.cta{
+    color:var(--ink); background:var(--brass); padding:9px 18px;
+    border-radius:var(--radius); font-weight:600;
+  }
+  .navlinks a.cta:hover{background:var(--brass-bright); color:var(--ink);}
+  .menu-btn{display:none; background:none; border:1px solid var(--line); color:var(--paper); padding:8px 12px; border-radius:var(--radius);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:96px 0 80px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-lattice{
+    position:absolute; inset:0; opacity:0.06; pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; align-items:center;
+    position:relative;
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:0.16em; font-size:12px;
+    color:var(--brass-bright); font-weight:600; margin-bottom:18px;
+  }
+  .eyebrow::before{content:"— "; color:var(--brick);}
+  h1.hero-name{
+    font-size:clamp(40px, 6vw, 66px);
+    line-height:1.02; margin:0 0 20px; font-weight:600;
+  }
+  .hero-lede{
+    font-size:18px; color:var(--paper-dim); max-width:46ch; margin:0 0 32px;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:var(--radius);
+    font-weight:600; font-size:15px; text-decoration:none;
+    border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--brass); color:var(--ink);}
+  .btn-primary:hover{background:var(--brass-bright);}
+  .btn-ghost{border-color:var(--line); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--brass-bright); color:var(--brass-bright);}
+
+  .hero-portrait{
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .portrait-frame{
+    width:100%; aspect-ratio:4/5; max-width:340px;
+    background:linear-gradient(160deg, var(--ink-2), var(--ink));
+    border:1px solid var(--line); border-radius:var(--radius);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .portrait-mono{font-family:'Fraunces',serif; font-size:96px; color:var(--brass); opacity:0.9;}
+  .portrait-frame .note{
+    position:absolute; bottom:14px; left:14px; right:14px;
+    font-size:11px; color:var(--paper-dim); text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .seal{
+    position:absolute; bottom:-26px; left:-26px; width:128px; height:128px;
+  }
+
+  /* SEAL SVG reused component styling */
+  .seal-ring{fill:none; stroke:var(--brass); stroke-width:1.4;}
+  .seal-text{fill:var(--brass-bright); font-family:'IBM Plex Mono', monospace;}
+  .seal-core{fill:var(--ink-2); stroke:var(--brass); stroke-width:1;}
+  .seal-initials{fill:var(--paper); font-family:'Fraunces', serif; font-weight:600;}
+
+  /* LATTICE DIVIDER */
+  .lattice-divider{width:100%; height:34px; display:block; opacity:0.5;}
+
+  /* SECTION SHELL */
+  section{padding:88px 0;}
+  .section-head{margin-bottom:48px; max-width:60ch;}
+  .section-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--brick);
+    text-transform:uppercase; letter-spacing:0.14em; margin-bottom:10px;
+  }
+  h2.section-title{font-size:clamp(28px,3.4vw,38px); margin:0 0 14px; font-weight:600;}
+  .section-desc{color:var(--paper-dim); font-size:16px;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:64px;}
+  .about-body p{color:var(--paper-dim); font-size:16.5px; margin:0 0 18px;}
+  .about-body strong{color:var(--paper); font-weight:600;}
+  .facts-ledger{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--ink-2);
+  }
+  .facts-ledger .row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:16px 20px; border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .facts-ledger .row:last-child{border-bottom:none;}
+  .facts-ledger .row .label{color:var(--paper-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;}
+  .facts-ledger .row .val{font-weight:600; text-align:right;}
+
+  /* COURSES / BATCH LEDGER */
+  .ledger{
+    width:100%; border-collapse:collapse; font-size:14.5px;
+  }
+  .ledger thead th{
+    text-align:left; padding:12px 16px; border-bottom:1px solid var(--brass);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--brass-bright); font-weight:500;
+  }
+  .ledger tbody td{
+    padding:18px 16px; border-bottom:1px solid var(--line); vertical-align:middle;
+  }
+  .ledger tbody tr:hover{background:rgba(193,150,63,0.06);}
+  .batch-code{font-family:'IBM Plex Mono', monospace; color:var(--brass-bright); font-size:13px;}
+  .course-name{font-weight:600; margin-bottom:3px;}
+  .course-sub{color:var(--paper-dim); font-size:13px;}
+  .status-pill{
+    display:inline-block; padding:4px 10px; border-radius:20px; font-size:11.5px;
+    font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .status-open{background:rgba(193,150,63,0.16); color:var(--brass-bright); border:1px solid rgba(193,150,63,0.4);}
+  .status-few{background:rgba(163,80,58,0.18); color:#e0876c; border:1px solid rgba(163,80,58,0.4);}
+  .status-full{background:rgba(236,230,214,0.08); color:var(--paper-dim); border:1px solid var(--line);}
+  .enroll-btn{
+    padding:8px 16px; background:transparent; border:1px solid var(--brass);
+    color:var(--brass-bright); border-radius:var(--radius); font-size:13px;
+    font-weight:600; cursor:pointer; white-space:nowrap;
+  }
+  .enroll-btn:hover{background:var(--brass); color:var(--ink);}
+  .enroll-btn:disabled{opacity:0.35; cursor:not-allowed;}
+  .ledger-note{margin-top:18px; font-size:13px; color:var(--paper-dim); display:flex; gap:8px; align-items:flex-start;}
+
+  /* PROTECTION DEMO */
+  .protect-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .player-mock{
+    background:#0b1614; border:1px solid var(--line); border-radius:var(--radius);
+    aspect-ratio:16/9; position:relative; overflow:hidden;
+  }
+  .player-mock .scene{
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(135deg, rgba(193,150,63,0.05) 0 2px, transparent 2px 40px),
+      linear-gradient(160deg, #17302c, #0b1614 70%);
+  }
+  .watermark{
+    position:absolute; color:rgba(236,230,214,0.28); font-family:'IBM Plex Mono',monospace;
+    font-size:12px; letter-spacing:0.04em; pointer-events:none; user-select:none;
+  }
+  .wm1{top:18%; left:12%; transform:rotate(-14deg);}
+  .wm2{top:52%; left:56%; transform:rotate(-14deg);}
+  .wm3{top:78%; left:20%; transform:rotate(-14deg);}
+  .player-controls{
+    position:absolute; bottom:0; left:0; right:0; padding:14px 16px;
+    background:linear-gradient(0deg, rgba(0,0,0,0.55), transparent);
+    display:flex; align-items:center; gap:12px;
+  }
+  .play-dot{width:34px; height:34px; border-radius:50%; background:var(--brass); display:flex; align-items:center; justify-content:center; color:var(--ink); font-size:13px;}
+  .progress{flex:1; height:3px; background:rgba(236,230,214,0.25); border-radius:2px; position:relative;}
+  .progress::after{content:""; position:absolute; left:0; top:0; bottom:0; width:38%; background:var(--brass);}
+  .time{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--paper-dim);}
+  .lock-badge{
+    position:absolute; top:14px; right:14px; background:rgba(11,22,20,0.8);
+    border:1px solid var(--brass); color:var(--brass-bright); font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px; padding:6px 10px; border-radius:20px; letter-spacing:0.04em;
+  }
+  .protect-list{list-style:none; margin:0; padding:0;}
+  .protect-list li{
+    display:flex; gap:14px; padding:18px 0; border-bottom:1px solid var(--line);
+  }
+  .protect-list li:last-child{border-bottom:none;}
+  .protect-num{
+    font-family:'IBM Plex Mono',monospace; color:var(--brick); font-size:13px; flex-shrink:0; width:22px;
+  }
+  .protect-list h4{margin:0 0 4px; font-size:15px; font-weight:600;}
+  .protect-list p{margin:0; font-size:13.5px; color:var(--paper-dim);}
+
+  /* REGISTRATION */
+  .reg-panel{
+    background:var(--ink-2); border:1px solid var(--line); border-radius:var(--radius);
+    padding:44px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px;
+  }
+  .reg-copy h3{font-size:24px; margin:0 0 12px;}
+  .reg-copy p{color:var(--paper-dim); font-size:14.5px; margin:0 0 20px;}
+  .reg-copy .seal{position:static; width:88px; height:88px; margin-top:8px;}
+  form.reg-form{display:grid; gap:16px;}
+  .field{display:grid; gap:6px;}
+  .field label{font-size:12px; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.06em; color:var(--paper-dim);}
+  .field input, .field select{
+    background:var(--ink); border:1px solid var(--line); color:var(--paper);
+    padding:12px 14px; border-radius:var(--radius); font-size:14.5px; font-family:inherit;
+  }
+  .field input:focus, .field select:focus{border-color:var(--brass);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .form-msg{font-size:13px; color:var(--brass-bright); min-height:18px;}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line); padding:56px 0 40px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-start; gap:32px; flex-wrap:wrap;}
+  .footer-brand{display:flex; gap:14px; align-items:center;}
+  .footer-brand .seal{position:static; width:52px; height:52px;}
+  .footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
+  .footer-col h5{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--brass-bright); margin:0 0 14px;}
+  .footer-col a, .footer-col p{display:block; color:var(--paper-dim); text-decoration:none; font-size:14px; margin-bottom:8px;}
+  .footer-col a:hover{color:var(--brass-bright);}
+  .footer-bottom{margin-top:48px; padding-top:24px; border-top:1px solid var(--line); font-size:12.5px; color:var(--paper-dim); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .placeholder-flag{color:var(--brick); font-weight:600;}
+
+  @media (max-width: 860px){
+    .navlinks{display:none;}
+    .menu-btn{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-portrait{order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .protect-grid{grid-template-columns:1fr;}
+    .reg-panel{grid-template-columns:1fr; padding:28px;}
+    .field-row{grid-template-columns:1fr;}
+    .ledger{font-size:13px;}
+    .ledger thead{display:none;}
+    .ledger, .ledger tbody, .ledger tr, .ledger td{display:block; width:100%;}
+    .ledger tr{border-bottom:1px solid var(--line); padding:14px 0;}
+    .ledger td{border:none; padding:4px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable seal SVG as inline symbol -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="seal-svg" viewBox="0 0 140 140">
+    <circle class="seal-ring" cx="70" cy="70" r="66"/>
+    <circle class="seal-ring" cx="70" cy="70" r="56"/>
+    <path id="sealArcTop" d="M 22,70 A 48,48 0 0 1 118,70" fill="none"/>
+    <path id="sealArcBottom" d="M 118,72 A 48,48 0 0 1 22,72" fill="none"/>
+    <text class="seal-text" font-size="9" letter-spacing="2">
+      <textPath href="#sealArcTop" startOffset="50%" text-anchor="middle">BS ENGLISH · PESHAWAR</textPath>
+    </text>
+    <text class="seal-text" font-size="9" letter-spacing="2">
+      <textPath href="#sealArcBottom" startOffset="50%" text-anchor="middle">CERTIFIED INSTRUCTOR</textPath>
+    </text>
+    <circle class="seal-core" cx="70" cy="70" r="34"/>
+    <text class="seal-initials" x="70" y="79" font-size="28" text-anchor="middle">ASA</text>
+  </symbol>
+</svg>
+
+<header class="site">
+  <nav class="wrap">
+    <div class="brandmark">
+      <svg class="seal-mini" viewBox="0 0 140 140"><use href="#seal-svg"/></svg>
+      Abdul Samad Afridi
+    </div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#courses">Courses</a>
+      <a href="#protection">How videos are protected</a>
+      <a href="#register" class="cta">Register</a>
+    </div>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">English Language Instructor</div>
+      <h1 class="hero-name display">Abdul Samad<br>Afridi</h1>
+      <p class="hero-lede">BS English graduate based in Peshawar, teaching Spoken English, IELTS Preparation and Grammar Foundations to students across Pakistan through batch-wise online courses.</p>
+      <div class="hero-actions">
+        <a href="#courses" class="btn btn-primary">View current batches</a>
+        <a href="#about" class="btn btn-ghost">Read full bio</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <span class="portrait-mono">ASA</span>
+        <div class="note">— PORTRAIT PLACEHOLDER —<br>swap for instructor photo</div>
+      </div>
+      <svg class="seal" viewBox="0 0 140 140"><use href="#seal-svg"/></svg>
+    </div>
+  </div>
+</section>
+
+<svg class="lattice-divider" viewBox="0 0 400 20" preserveAspectRatio="none">
+  <defs>
+    <pattern id="jali" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="#c1963f" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="20" fill="url(#jali)"/>
+</svg>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-body">
+      <div class="section-tag">01 — About the instructor</div>
+      <h2 class="section-title display">Bio &amp; qualifications</h2>
+      <p><strong>Abdul Samad Afridi</strong> holds a <strong>BS in English</strong> and has spent his teaching career focused on making spoken fluency and exam-ready English accessible to students across Khyber Pakhtunkhwa, both in classrooms and online.</p>
+      <p>Based in <strong>Peshawar</strong>, his courses combine structured grammar foundations with practical speaking drills, feedback, and batch-based cohorts so every student progresses alongside peers at the same level — rather than working through a static, one-size-fits-all video library.</p>
+      <p class="placeholder-flag" style="font-size:13px;">↳ Placeholder bio — replace with the instructor's actual teaching history, years of experience, certifications and a short personal note.</p>
+    </div>
+    <div class="facts-ledger mono">
+      <div class="row"><span class="label">Location</span><span class="val">Peshawar, KP</span></div>
+      <div class="row"><span class="label">Qualification</span><span class="val">BS English</span></div>
+      <div class="row"><span class="label">Teaches</span><span class="val">Spoken · IELTS · Grammar</span></div>
+      <div class="row"><span class="label">Mode</span><span class="val">Batch-wise, Online</span></div>
+      <div class="row"><span class="label">Language</span><span class="val">English / Urdu / Pashto</span></div>
+      <div class="row"><span class="label">Contact</span><span class="val">Add phone / email</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" style="background:var(--ink-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">02 — Batch ledger</div>
+      <h2 class="section-title display">Current &amp; upcoming batches</h2>
+      <p class="section-desc">Students register per batch. Each batch has a fixed start date and seat count — access is granted only for the batch a student is enrolled in.</p>
+    </div>
+
+    <table class="ledger">
+      <thead>
+        <tr>
+          <th>Batch</th>
+          <th>Course</th>
+          <th>Starts</th>
+          <th>Seats</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="batch-code">ASA-SPK-014</td>
+          <td><div class="course-name">Spoken English Mastery</div><div class="course-sub">12 sessions · Beginner–Intermediate</div></td>
+          <td class="mono">03 Sep 2026</td>
+          <td class="mono">18 / 25</td>
+          <td><span class="status-pill status-open">Open</span></td>
+          <td><button class="enroll-btn">Enroll</button></td>
+        </tr>
+        <tr>
+          <td class="batch-code">ASA-IEL-009</td>
+          <td><div class="course-name">IELTS Preparation</div><div class="course-sub">10 sessions · Band 6.5+ focus</div></td>
+          <td class="mono">10 Sep 2026</td>
+          <td class="mono">22 / 25</td>
+          <td><span class="status-pill status-few">Few seats</span></td>
+          <td><button class="enroll-btn">Enroll</button></td>
+        </tr>
+        <tr>
+          <td class="batch-code">ASA-GRM-021</td>
+          <td><div class="course-name">English Grammar Foundations</div><div class="course-sub">8 sessions · All levels</div></td>
+          <td class="mono">17 Aug 2026</td>
+          <td class="mono">25 / 25</td>
+          <td><span class="status-pill status-full">Full</span></td>
+          <td><button class="enroll-btn" disabled>Enroll</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="ledger-note">⚑ Placeholder course data — replace batch codes, dates, seat counts and pricing with the real schedule.</div>
+  </div>
+</section>
+
+<section id="protection">
+  <div class="wrap protect-grid">
+    <div>
+      <div class="section-tag">03 — Video protection demo</div>
+      <h2 class="section-title display" style="max-width:14ch;">How recordings are locked down</h2>
+      <div class="player-mock">
+        <div class="scene"></div>
+        <span class="watermark wm1">abdul.samad · student #2291</span>
+        <span class="watermark wm2">03 Sep 2026 · 14:22</span>
+        <span class="watermark wm3">ASA-SPK-014</span>
+        <div class="lock-badge">🔒 No download · Streaming only</div>
+        <div class="player-controls">
+          <div class="play-dot">▶</div>
+          <div class="progress"></div>
+          <span class="time mono">12:04 / 31:40</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div>
+      <ul class="protect-list">
+        <li>
+          <span class="protect-num mono">01</span>
+          <div><h4>No direct file, ever</h4><p>Video is streamed in encrypted chunks, not served as a downloadable file — there is nothing to "save as."</p></div>
+        </li>
+        <li>
+          <span class="protect-num mono">02</span>
+          <div><h4>Per-student watermark</h4><p>Each student's name, ID and timestamp are burned into the video they watch, as shown above — a strong deterrent against screen recording and sharing.</p></div>
+        </li>
+        <li>
+          <span class="protect-num mono">03</span>
+          <div><h4>Signed, expiring links</h4><p>Playback links are single-use and tied to the logged-in student's session, so a shared link stops working immediately.</p></div>
+        </li>
+        <li>
+          <span class="protect-num mono">04</span>
+          <div><h4>Honest limit</h4><p>Screen recording by a phone camera or OS tool can't be technically blocked by any platform. Watermarking is what makes leaks traceable.</p></div>
+        </li>
+      </ul>
+    </div> -->
+  </div>
+</section>
+
+<section id="register" style="background:var(--ink-2); border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="reg-panel">
+      <div class="reg-copy">
+        <svg class="seal" viewBox="0 0 140 140"><use href="#seal-svg"/></svg>
+        <h3 class="display">Register for a batch</h3>
+        <p>Choose a batch and submit your details. You'll receive login access once your seat is confirmed. This form is a prototype — no data is submitted yet.</p>
+      </div>
+      <form class="reg-form" id="regForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input id="fname" type="text" placeholder="e.g. Ayesha Khan" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" type="tel" placeholder="03xx-xxxxxxx" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="batch">Select batch</label>
+          <select id="batch">
+            <option>ASA-SPK-014 — Spoken English Mastery — 03 Sep 2026</option>
+            <option>ASA-IEL-009 — IELTS Preparation — 10 Sep 2026</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;">Submit registration</button>
+        <div class="form-msg" id="formMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg class="seal" viewBox="0 0 140 140"><use href="#seal-svg"/></svg>
+        <div>
+          <div style="font-weight:600;">Abdul Samad Afridi</div>
+          <div style="color:var(--paper-dim); font-size:13px;">BS English · Peshawar, Pakistan</div>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Site</h5>
+          <a href="#about">About</a>
+          <a href="#courses">Courses</a>
+          <a href="#register">Register</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <p class="placeholder-flag">Add phone number</p>
+          <p class="placeholder-flag">Add email address</p>
+          <p class="placeholder-flag">Add WhatsApp / social</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Abdul Samad Afridi. All rights reserved.</span>
+      <span class="mono">Prototype build — not for production use</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formMsg').textContent = '✓ Prototype only — this would confirm the seat and send login details by email/SMS.';
+  });
+</script>
+
+</body>
+</html>
